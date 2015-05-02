@@ -35,6 +35,13 @@ public class PlayerHealth : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D coll){
+		if (coll.transform.tag == "Death"){
+			LoseLife();
+		}
+		Debug.Log("Collision with: " + coll.gameObject.tag);
+	}
+
 	void LoseLife(){
 		if (lives > 1){
 			transform.position = start;

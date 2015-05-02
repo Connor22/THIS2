@@ -17,12 +17,14 @@ public class GenericMovement: MonoBehaviour
 	private Animator anim;
 	private Vector3 curVelocity;
 	private bool hasDoubleJumped = true;
+	private PlayerShoot power_up;
 	
 	
 	void Awake()
 	{
 		//anim = GetComponent<Animator>();
 		charControl = GetComponent<CharacterController2D>();
+		power_up = gameObject.GetComponent<PlayerShoot>();
 	}
 	
 	// the Update loop contains a very simple example of moving the character around and controlling the animation
@@ -67,7 +69,7 @@ public class GenericMovement: MonoBehaviour
 			hasDoubleJumped = false;
 			curVelocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );
 			// anim.Play( Animator.StringToHash( "Jump" ) );
-		} else if ( Input.GetKeyDown( KeyCode.UpArrow ) && !hasDoubleJumped ) {
+		} else if ( Input.GetKeyDown( KeyCode.UpArrow ) && !hasDoubleJumped && power_up.state == PlayerShoot.Its.Jump && (power_up.uses_left - power_up.jump_cost) > 0 ) {
 			hasDoubleJumped = true;
 			curVelocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );
 		}
