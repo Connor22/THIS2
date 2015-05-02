@@ -42,7 +42,7 @@ public class PlayerShoot : MonoBehaviour {
 			state = Its.Shield;
 		}
 
-		if (state = Its.Shot && (uses_left - shot_cost) > 0){
+		if (state == Its.Shot && (uses_left - shot_cost) > 0){
 			if (timer > 0) {
 				timer -= Time.deltaTime;
 			} else if (Input.GetAxis("Fire") > 0 && ForwardShot.bullet_count < max_shot) {
@@ -58,7 +58,7 @@ public class PlayerShoot : MonoBehaviour {
 				timer = delay;
 				uses_left -= shot_cost;
 			}
-		} else if (state = Its.Shield && (uses_left - shield_cost) > 0) {
+		} else if (state == Its.Shield && (uses_left - shield_cost) > 0) {
 		}
 
 	}
