@@ -563,8 +563,8 @@ MonoBehaviour:
   state: 0
   shot_cost: 0
   jump_cost: 2
-  shield_cost: 0
-  total_uses: 10
+  shield_cost: 1
+  total_uses: 0
   uses_left: 0
 --- !u!114 &11464682
 MonoBehaviour:

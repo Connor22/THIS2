@@ -57,3 +57,6 @@ TagManager:
   - name: Overlay
     uniqueID: 1534570211
     locked: 0
+  - name: TopOverlay
+    uniqueID: 384607935
+    locked: 0

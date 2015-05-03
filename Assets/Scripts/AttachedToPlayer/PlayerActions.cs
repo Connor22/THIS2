@@ -21,8 +21,7 @@ public class PlayerActions : MonoBehaviour {
 	public float shot_cost;
 	public float jump_cost;
 	public float shield_cost; 
-
-	[HideInInspector]
+	
 	public float total_uses;
 
 	[HideInInspector]
@@ -30,6 +29,8 @@ public class PlayerActions : MonoBehaviour {
 
 	private PlayerChecks pCheck;
 	private float timer;
+	private float shieldtimer;
+	private bool isShieldActive;
 	//private GameObject shield_instance = null;
 
 	private AudioSource[] Sounds;
@@ -41,7 +42,7 @@ public class PlayerActions : MonoBehaviour {
 		shotSound = Sounds[5];
 
 		pCheck = GameObject.Find("Main Camera").GetComponent<PlayerChecks>();
-		total_uses = pCheck.currentMaxUses;
+
 		timer = 0;
 		state = Its.Null;
 		uses_left = total_uses;
@@ -67,12 +68,10 @@ public class PlayerActions : MonoBehaviour {
 			}
 		} else if (state == Its.Shield && (uses_left - shield_cost) > 0) {
 			if (Input.GetKeyDown(KeyCode.Space) && !shield.activeSelf){
-				//shield_instance = (GameObject)Instantiate(shield, transform.position, transform.rotation);
-				//shield_instance.transform.parent = transform;
 				shield.SetActive(true);
+				isShieldActive = true;
 				gameObject.tag = "Shield";
-				//gameObject.layer = 13;
-				//shield_instance.SendMessage("SetManager", gameObject);
+				removeUses(shield_cost);
 			}
 			if (Input.GetKeyUp(KeyCode.Space)){
 				//gameObject.layer = 12;
@@ -80,9 +79,22 @@ public class PlayerActions : MonoBehaviour {
 				gameObject.tag = "Player";
 			}
 		}
+
+		if (isShieldActive){
+			shieldtimer += Time.deltaTime;
+		} else {
+			shieldtimer = 0f;
+		}
+
+		if (shieldtimer > 1f){
+			removeUses(shield_cost);
+			print(uses_left);
+			shieldtimer = 0f;
+		}
 	}
 
 	public void jumpForm(){
+		gameObject.tag = "Player";
 		state = Its.Jump;
 		timer = 0;
 		DestroyShield();
@@ -96,6 +108,7 @@ public class PlayerActions : MonoBehaviour {
 	}
 	
 	public void shotForm(){
+		gameObject.tag = "Player";
 		state = Its.Shot;
 		DestroyShield();
 		GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0.5f);
@@ -129,6 +142,8 @@ public class PlayerActions : MonoBehaviour {
 
 		uses_left -= cost;
 
+		print (uses_left);
+
 		if (uses_left > pCheck.currentMaxUses){
 			uses_left = pCheck.currentMaxUses;
 		}
@@ -146,6 +161,7 @@ public class PlayerActions : MonoBehaviour {
 		if (shield != null){
 			shield.SetActive(false);
 		}
+		isShieldActive = false;
 	}
 
 	public void JumpCounter(){
