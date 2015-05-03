@@ -37,7 +37,10 @@ public class EnemyHealth : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll){
 		if (coll.transform.tag == "NormalBullet"){
 			playSound();
-			Destroy(coll.gameObject);
+			ForwardShot bullet = coll.gameObject.GetComponent<ForwardShot>();
+			if (bullet != null){
+				bullet.DestroyBullet();
+			}
 			if (health > 1){
 				hp--;
 			} else {

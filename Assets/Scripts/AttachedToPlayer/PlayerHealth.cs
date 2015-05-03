@@ -29,7 +29,7 @@ public class PlayerHealth : MonoBehaviour {
 		
 	}
 
-	void OnCollisionEnter2D(Collision2D coll){
+	/*void OnCollisionEnter2D(Collision2D coll){
 		//Debug.Log("Layer: " + gameObject.layer);
 		if (coll.transform.tag == "Enemy" || coll.transform.tag == "EnemyBullet"){
 			if (health > 1){
@@ -42,10 +42,16 @@ public class PlayerHealth : MonoBehaviour {
 			LoseLife();
 		}
 		Debug.Log("Collision with: " + coll.gameObject.tag);
-	}
+	}*/
 
 	void OnTriggerEnter2D(Collider2D coll){
 		if (coll.transform.tag == "Death" || coll.transform.tag == "Enemy" || coll.transform.tag == "EnemyBullet"){
+			if ( coll.gameObject.tag == "EnemyBullet" ){
+				ForwardShot bullet = coll.gameObject.GetComponent<ForwardShot>();
+				if (bullet != null){
+					bullet.DestroyBullet();
+				}
+			}
 			if (gameObject.tag == "Player"){
 				LoseLife();
 			} else if (gameObject.tag == "Shield"){

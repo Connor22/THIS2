@@ -9,7 +9,8 @@ public class ForwardShot : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		bullet_count++;
+		if (gameObject.tag == "NormalBullet")
+			bullet_count++;
 	}
 
 	void OnBecameInvisible(){
@@ -27,7 +28,8 @@ public class ForwardShot : MonoBehaviour {
 	}
 
 	void DestroyBullet(){
-		bullet_count--;
+		if (gameObject.tag == "NormalBullet")
+			bullet_count--;
 		Destroy(gameObject);
 	}
 
