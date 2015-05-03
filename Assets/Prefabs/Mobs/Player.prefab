@@ -646,7 +646,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 105342}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de4bf565142b5449b95fd45197b10c1, type: 3}
+  m_Script: {fileID: 11500000, guid: f6bf41f6ee18cfc4fb215dc4a229f382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   touchingDoor: 0
@@ -658,13 +658,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 105342}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb958cbea92ccc54b872b8f37bfe7728, type: 3}
+  m_Script: {fileID: 11500000, guid: fe189eae66a246244b971ab20469b83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: -50
-  runSpeed: 5
+  gravity: -25
+  runSpeed: 8
   jumpHeight: 3
-  extraSpeedOnJump: 3
+  extraSpeedOnJump: 5
 --- !u!212 &21274050
 SpriteRenderer:
   m_ObjectHideFlags: 1
