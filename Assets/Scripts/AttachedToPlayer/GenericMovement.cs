@@ -7,24 +7,26 @@ public class GenericMovement: MonoBehaviour
 	public float runSpeed = 8f;
 	public float jumpHeight = 3f;
 
-	public float groundDamping = 20f; // how fast do we change direction? higher means faster
-	public float inAirDamping = 5f;
+	public AudioClip jumpClip;
 
 	[HideInInspector]
 	private float horizontalSpeed = 0;
 	
 	private CharacterController2D charControl;
 	private Animator anim;
+	private AudioSource jumpSound;
+
 	private Vector3 curVelocity;
-	private bool hasDoubleJumped = true;
-	private PlayerShoot power_up;
+	private bool hasDoubleJumped;
+	private float groundDamping = 20f; // how fast do we change direction? higher means faster
+	private float inAirDamping = 5f;
 	
 	
 	void Awake()
 	{
 		//anim = GetComponent<Animator>();
 		charControl = GetComponent<CharacterController2D>();
-		power_up = gameObject.GetComponent<PlayerShoot>();
+		jumpSound = GetComponent<AudioSource>();
 	}
 	
 	// the Update loop contains a very simple example of moving the character around and controlling the animation
@@ -33,10 +35,8 @@ public class GenericMovement: MonoBehaviour
 		// grab our current curVelocity to use as a base for all calculations
 		curVelocity = charControl.velocity;
 		
-		if( charControl.isGrounded ){
+		if( charControl.isGrounded )
 			curVelocity.y = 0;
-			hasDoubleJumped = false;
-		}
 		
 		if( Input.GetKey( KeyCode.RightArrow ) )
 		{
@@ -68,11 +68,18 @@ public class GenericMovement: MonoBehaviour
 		// we can only jump whilst grounded
 		if( charControl.isGrounded && Input.GetKeyDown( KeyCode.UpArrow ) )
 		{
+			jumpSound.PlayOneShot(jumpClip, 1F);
+			hasDoubleJumped = false;
 			curVelocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );
 			// anim.Play( Animator.StringToHash( "Jump" ) );
-		} else if ( Input.GetKeyDown( KeyCode.UpArrow ) && !hasDoubleJumped && power_up.state == PlayerShoot.Its.Jump && (power_up.uses_left - power_up.jump_cost) > 0 ) {
+		} else if ( Input.GetKeyDown( KeyCode.UpArrow ) && !hasDoubleJumped ) {
 			hasDoubleJumped = true;
 			curVelocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );
+		}
+
+		if( charControl.isGrounded && !Input.GetKey( KeyCode.LeftArrow ) && !Input.GetKey( KeyCode.RightArrow ) ) {
+			Vector3 stopVec = new Vector3(0, 0, curVelocity.z);
+			curVelocity = stopVec;
 		}
 		
 		

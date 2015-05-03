@@ -43,9 +43,9 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	void LoseLife(){
-		if (lives > 1){
+		if (lives > 0){
 			transform.position = start;
-			lives--;
+			//lives--;
 			hp = health;
 		} else {
 			Destroy(gameObject);
