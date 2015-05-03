@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerShoot : MonoBehaviour {
 
-	public enum Its { Shot, Jump, Shield };
+	public enum Its {Null, Shot, Jump, Shield };
 	// S.H.O.T.: Shell Hits Opposing Targets
 	// J.U.M.P.: Just Up More Please
 	// S.H.I.E.L.D.: Set-up Helpful Impenetrable Energy Layer of Defence
@@ -17,52 +17,37 @@ public class PlayerShoot : MonoBehaviour {
 	public float total_uses = 100;
 	public float shot_cost;
 	public float jump_cost;
-	public float shield_cost;
+	public float shield_cost; 
 	public float uses_left;
 
-
+	private PlayerChecks pCheck;
 	private float timer;
 	//private GameObject shield_instance = null;
 
 	// Use this for initialization
 	void Awake () {
+		pCheck = GameObject.Find("Main Camera").GetComponent<PlayerChecks>();
 		timer = 0;
-		state = Its.Shot;
+		state = Its.Null;
 		uses_left = total_uses;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyDown(KeyCode.Alpha1)){
-			state = Its.Shot;
-			DestroyShield();
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha2)){
-			state = Its.Jump;
-			timer = 0;
-			DestroyShield();
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha3)){
-			state = Its.Shield;
-			timer = 0;
+		if (Input.GetKeyDown(KeyCode.Alpha1) && pCheck.hasJump){
+			jumpForm();
+		} else if (Input.GetKeyDown(KeyCode.Alpha2) && pCheck.hasShield){
+			shieldForm();
+		} else if (Input.GetKeyDown(KeyCode.Alpha3) && pCheck.hasShot){
+			shotForm();
 		}
 
 		if (state == Its.Shot && (uses_left - shot_cost) > 0){
 			if (timer > 0) {
 				timer -= Time.deltaTime;
 			} else if (Input.GetAxis("Fire") > 0 && ForwardShot.bullet_count < max_shot) {
-				float directionFaced = transform.localScale.x / Mathf.Abs(transform.localScale.x);
-				Vector3 tempVec = transform.position;
-				if (directionFaced > 0){
-					tempVec.x = tempVec.x + 0.5f;
-				} else {
-					tempVec.x = tempVec.x - 0.5f;
-				}
-				GameObject ammoInstance = (GameObject)Instantiate(ammo, tempVec, transform.rotation);
-				ammoInstance.GetComponent<ForwardShot>().SendMessage("setDirection", directionFaced);
-				timer = delay;
-				uses_left -= shot_cost;
+				fire();
 			}
 		} else if (state == Its.Shield && (uses_left - shield_cost) > 0) {
 			if (Input.GetKeyDown(KeyCode.Space) && !shield.activeSelf){
@@ -77,7 +62,45 @@ public class PlayerShoot : MonoBehaviour {
 				DestroyShield();
 			}
 		}
+	}
 
+	public void jumpForm(){
+		state = Its.Jump;
+		timer = 0;
+		DestroyShield();
+		GetComponent<SpriteRenderer>().color = new Color(0f, 1f, 0f);
+	}
+	
+	public void shieldForm(){
+		state = Its.Shield;
+		timer = 0;
+		GetComponent<SpriteRenderer>().color = new Color(0f, 1f, 1f);
+	}
+	
+	public void shotForm(){
+		state = Its.Shot;
+		DestroyShield();
+		GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0.5f);
+	}
+
+	public void nullForm(){
+		state = Its.Null;
+		DestroyShield();
+		GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f);
+	}
+	
+	void fire(){
+		float directionFaced = transform.localScale.x / Mathf.Abs(transform.localScale.x);
+		Vector3 tempVec = transform.position;
+		if (directionFaced > 0){
+			tempVec.x = tempVec.x + 0.5f;
+		} else {
+			tempVec.x = tempVec.x - 0.5f;
+		}
+		GameObject ammoInstance = (GameObject)Instantiate(ammo, tempVec, transform.rotation);
+		ammoInstance.GetComponent<ForwardShot>().SendMessage("setDirection", directionFaced);
+		timer = delay;
+		uses_left -= shot_cost;
 	}
 
 	void DestroyShield(){

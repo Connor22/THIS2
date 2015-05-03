@@ -6,13 +6,34 @@ public class DoorsBehaviour : MonoBehaviour {
 	public bool touchingDoor = false;
 
 	private GameObject currentDoor;
+	private PlayerChecks pCheck;
+	private PlayerShoot pShoot;
+
+	void Awake(){
+		pCheck = GameObject.Find("Main Camera").GetComponent<PlayerChecks>();
+		pShoot = GetComponent<PlayerShoot>();
+	}
 	
 	void OnTriggerEnter2D(Collider2D coll){
 		if (coll.gameObject.tag == "Door"){
 			currentDoor = coll.gameObject;
 			touchingDoor = true;
+		} else if (	coll.gameObject.tag == "Gem" ){
+			GameObject.Find("Player").GetComponent<PlayerShoot>().uses_left += 10;
+			Destroy(coll.gameObject);
+		} else if (coll.gameObject.tag == "JumpGem"){
+			pCheck.gotJump();
+			pShoot.jumpForm();
+			Destroy(coll.gameObject);
+		} else if (coll.gameObject.tag == "ShotGem"){
+			pCheck.gotShot();
+			pShoot.shotForm();
+			Destroy(coll.gameObject);
+		} else if (coll.gameObject.tag == "ShieldGem"){
+			pCheck.gotShield();
+			pShoot.shieldForm();
+			Destroy(coll.gameObject);
 		}
-		Debug.Log("Collision with: " + coll.gameObject.tag);
 	}
 	
 	void OnTriggerExit2D(Collider2D coll){
@@ -20,7 +41,6 @@ public class DoorsBehaviour : MonoBehaviour {
 			currentDoor = null;
 			touchingDoor = false;
 		}
-		Debug.Log("Stopped collision with: " + coll.gameObject.tag);
 	}
 	
 	void Update(){

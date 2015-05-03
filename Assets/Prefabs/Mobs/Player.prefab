@@ -383,6 +383,7 @@ MonoBehaviour:
   gravity: -25
   runSpeed: 3
   jumpHeight: 1.5
+  extraSpeedOnJump: 5
 --- !u!212 &21274050
 SpriteRenderer:
   m_ObjectHideFlags: 1

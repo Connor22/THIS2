@@ -6,6 +6,7 @@ public class GenericMovement: MonoBehaviour
 	public float gravity = -25f;
 	public float runSpeed = 8f;
 	public float jumpHeight = 3f;
+	public float extraSpeedOnJump = 5f;
 
 	[HideInInspector]
 	private float horizontalSpeed = 0;
@@ -31,8 +32,10 @@ public class GenericMovement: MonoBehaviour
 		Sounds = GetComponents<AudioSource>();
 		power_up = gameObject.GetComponent<PlayerShoot>();
 		charControl = GetComponent<CharacterController2D>();
+
 		jumpSound = Sounds[0];
 		dbljumpSound = Sounds[1];
+
 		idleStarted = false;
 	}
 	
@@ -47,7 +50,7 @@ public class GenericMovement: MonoBehaviour
 			hasDoubleJumped = false;
 			finalizedRunSpeed = runSpeed;
 		} else {
-			finalizedRunSpeed = runSpeed + 5;
+			finalizedRunSpeed = runSpeed + extraSpeedOnJump;
 		}
 		
 		if( Input.GetKey( KeyCode.RightArrow ) )
@@ -87,11 +90,12 @@ public class GenericMovement: MonoBehaviour
 			jumpSound.Play();
 			curVelocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );
 			idleStarted = false;
-			// anim.Play( Animator.StringToHash( "Jump" ) );
+			anim.Play( Animator.StringToHash( "Jump" ) );
 		} else if ( Input.GetKeyDown( KeyCode.UpArrow ) && !hasDoubleJumped && power_up.state == PlayerShoot.Its.Jump && (power_up.uses_left - power_up.jump_cost) > 0 )  {
 			dbljumpSound.Play();
 			hasDoubleJumped = true;
 			curVelocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );
+			power_up.SendMessage("JumpCounter");
 		}
 
 		if( charControl.isGrounded && !Input.GetKey( KeyCode.LeftArrow ) && !Input.GetKey( KeyCode.RightArrow ) && !Input.GetKey( KeyCode.UpArrow ) ) {
