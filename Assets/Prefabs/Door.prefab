@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.600000024, z: 0}
+  m_LocalPosition: {x: -15.8699999, y: 18.6700001, z: 0}
   m_LocalScale: {x: .800000012, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c0f48a0db6407429f2ee09a9c4c49e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorName: TestArena
+  doorName: EndScene
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
