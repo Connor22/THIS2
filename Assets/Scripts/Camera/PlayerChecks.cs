@@ -99,8 +99,7 @@ public class PlayerChecks : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey( KeyCode.Escape )){
 			quitProcess();
-			GameObject.Find("Player").GetComponent<PlayerActions>().nullForm();
-			//Application.Quit();
+			Application.Quit();
 		} else if (Input.GetKey( KeyCode.R )){
 			revertProcess();
 			Application.LoadLevel(Application.loadedLevelName);

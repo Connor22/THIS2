@@ -112,6 +112,7 @@ public class PlayerCollisions: MonoBehaviour {
 	void Update(){
 		if (Input.GetKey( KeyCode.Space ) && touchingDoor){
 			Application.LoadLevel(currentDoor.GetComponent<DoorName>().doorName);
+			PlayerPrefs.SetInt("beat" + Application.loadedLevelName, 1);
 		}
 		if (isTouchingBigGem && !(gameObject.tag == "Shield")){
 			pCheck.increaseMaxUses(5);
