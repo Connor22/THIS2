@@ -12,6 +12,7 @@ TagManager:
   - Player
   - Shield
   - Gem
+  - JumpGem
   layers:
   - Default
   - TransparentFX

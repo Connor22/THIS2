@@ -18,6 +18,7 @@ GameObject:
   - 114: {fileID: 11476082}
   - 82: {fileID: 8221866}
   - 82: {fileID: 8215154}
+  - 212: {fileID: 21297262}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -50,7 +51,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.0149994, y: -9.14700031, z: 0}
+  m_LocalPosition: {x: -1.97000003, y: .890999973, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children:
   - {fileID: 487076}
@@ -108,7 +109,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: -.100000001, y: -.075000003}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: .699999988, y: .800000012}
 --- !u!82 &8215154
 AudioSource:
   m_ObjectHideFlags: 1
@@ -379,10 +380,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb958cbea92ccc54b872b8f37bfe7728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: -25
-  runSpeed: 3
-  jumpHeight: 1.5
-  extraSpeedOnJump: 5
+  gravity: -50
+  runSpeed: 5
+  jumpHeight: 3
+  extraSpeedOnJump: 3
 --- !u!212 &21274050
 SpriteRenderer:
   m_ObjectHideFlags: 1

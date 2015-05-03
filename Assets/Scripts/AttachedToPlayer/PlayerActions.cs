@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class PlayerShoot : MonoBehaviour {
+public class PlayerActions : MonoBehaviour {
 
 	public enum Its {Null, Shot, Jump, Shield };
 	// S.H.O.T.: Shell Hits Opposing Targets
@@ -30,6 +30,7 @@ public class PlayerShoot : MonoBehaviour {
 		timer = 0;
 		state = Its.Null;
 		uses_left = total_uses;
+		removeUses(0f);
 	}
 	
 	// Update is called once per frame
@@ -102,7 +103,18 @@ public class PlayerShoot : MonoBehaviour {
 		GameObject ammoInstance = (GameObject)Instantiate(ammo, tempVec, transform.rotation);
 		ammoInstance.GetComponent<ForwardShot>().SendMessage("setDirection", directionFaced);
 		timer = delay;
-		uses_left -= shot_cost;
+		removeUses(shot_cost);
+	}
+
+	public void removeUses(float cost){
+		uses_left -= cost;
+		int uses_left_int = (int)uses_left;
+		int hundreds = uses_left_int / 100;
+		int tens = uses_left_int / 10 - hundreds * 10;
+		int singles = uses_left_int - hundreds * 100 - tens * 10;
+		GameObject.Find("Hundreds").GetComponent<DigitUpdater>().updateDigit(hundreds);
+		GameObject.Find("Tens").GetComponent<DigitUpdater>().updateDigit(tens);
+		GameObject.Find("Singles").GetComponent<DigitUpdater>().updateDigit(singles);
 	}
 
 	void DestroyShield(){
@@ -112,7 +124,7 @@ public class PlayerShoot : MonoBehaviour {
 	}
 
 	public void JumpCounter(){
-		uses_left -= jump_cost;
+		removeUses(jump_cost);
 		print ("Jump - Uses left: " + uses_left);
 	}
 

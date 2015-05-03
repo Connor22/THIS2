@@ -3,11 +3,11 @@ using System.Collections;
 
 public class ShieldBehaviour : MonoBehaviour {
 
-	private PlayerShoot manager;
+	private PlayerActions manager;
 
 	// Use this for initialization
 	void Awake () {
-		manager = transform.parent.GetComponent<PlayerShoot>();
+		manager = transform.parent.GetComponent<PlayerActions>();
 	}
 	
 	// Update is called once per frame

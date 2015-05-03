@@ -9,14 +9,14 @@ public class PlayerHealth : MonoBehaviour {
 	private int hp;
 	private int lives;
 	private Vector3 start;
-	private PlayerShoot power_up;
+	private PlayerActions power_up;
 
 	// Use this for initialization
 	void Start () {
 		hp = health;
 		lives = continues;
 		start = transform.position;
-		power_up = gameObject.GetComponent<PlayerShoot>();
+		power_up = gameObject.GetComponent<PlayerActions>();
 	}
 	
 	// Update is called once per frame

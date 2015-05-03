@@ -7,11 +7,11 @@ public class DoorsBehaviour : MonoBehaviour {
 
 	private GameObject currentDoor;
 	private PlayerChecks pCheck;
-	private PlayerShoot pShoot;
+	private PlayerActions pShoot;
 
 	void Awake(){
 		pCheck = GameObject.Find("Main Camera").GetComponent<PlayerChecks>();
-		pShoot = GetComponent<PlayerShoot>();
+		pShoot = GetComponent<PlayerActions>();
 	}
 	
 	void OnTriggerEnter2D(Collider2D coll){
@@ -19,7 +19,7 @@ public class DoorsBehaviour : MonoBehaviour {
 			currentDoor = coll.gameObject;
 			touchingDoor = true;
 		} else if (	coll.gameObject.tag == "Gem" ){
-			GameObject.Find("Player").GetComponent<PlayerShoot>().uses_left += 10;
+			pShoot.removeUses(-10f);
 			Destroy(coll.gameObject);
 		} else if (coll.gameObject.tag == "JumpGem"){
 			pCheck.gotJump();

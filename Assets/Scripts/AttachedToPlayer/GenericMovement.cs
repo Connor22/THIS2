@@ -19,7 +19,7 @@ public class GenericMovement: MonoBehaviour
 	private AudioSource dbljumpSound;
 
 	private Vector3 curVelocity;
-	private PlayerShoot power_up;
+	private PlayerActions power_up;
 	private bool hasDoubleJumped;
 	private bool idleStarted;
 	private float groundDamping = 20f; // how fast do we change direction? higher means faster
@@ -30,7 +30,7 @@ public class GenericMovement: MonoBehaviour
 	{
 		anim = GetComponent<Animator>();
 		Sounds = GetComponents<AudioSource>();
-		power_up = gameObject.GetComponent<PlayerShoot>();
+		power_up = gameObject.GetComponent<PlayerActions>();
 		charControl = GetComponent<CharacterController2D>();
 
 		jumpSound = Sounds[0];
@@ -91,7 +91,7 @@ public class GenericMovement: MonoBehaviour
 			curVelocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );
 			idleStarted = false;
 			anim.Play( Animator.StringToHash( "Jump" ) );
-		} else if ( Input.GetKeyDown( KeyCode.UpArrow ) && !hasDoubleJumped && power_up.state == PlayerShoot.Its.Jump && (power_up.uses_left - power_up.jump_cost) > 0 )  {
+		} else if ( Input.GetKeyDown( KeyCode.UpArrow ) && !hasDoubleJumped && power_up.state == PlayerActions.Its.Jump && (power_up.uses_left - power_up.jump_cost) > 0 )  {
 			dbljumpSound.Play();
 			hasDoubleJumped = true;
 			curVelocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );

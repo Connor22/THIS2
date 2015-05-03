@@ -7,7 +7,7 @@ public class ExitGame : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey( KeyCode.Escape )){
 			GetComponent<PlayerChecks>().quitProcess();
-			GameObject.Find("Player").GetComponent<PlayerShoot>().nullForm();
+			GameObject.Find("Player").GetComponent<PlayerActions>().nullForm();
 			//Application.Quit();
 		}
 	}
