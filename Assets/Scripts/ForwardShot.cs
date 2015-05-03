@@ -31,7 +31,7 @@ public class ForwardShot : MonoBehaviour {
 		Destroy(gameObject);
 	}
 
-	void OnCollisionEnter2D(Collision2D coll){
+	/*void OnCollisionEnter2D(Collision2D coll){
 		if (coll.gameObject.tag == "NormalBullet"){
 			return;
 		}
@@ -41,11 +41,11 @@ public class ForwardShot : MonoBehaviour {
 
 	/** Look at Sean's GMD for bullet collision handling */
 
-	void OnTriggerEnter2D(Collider2D coll){
+	/*void OnTriggerEnter2D(Collider2D coll){
 		if (coll.gameObject.tag == "NormalBullet"){
 			return;
 		}
 		
 		DestroyBullet();
-	}
+	}*/
 }

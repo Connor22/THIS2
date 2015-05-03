@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11432468}
   - 61: {fileID: 6178360}
   - 50: {fileID: 5035160}
+  - 114: {fileID: 11471958}
   m_Layer: 0
   m_Name: testenemy
   m_TagString: Enemy
@@ -71,6 +72,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+--- !u!114 &11471958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67aaf5aa1028ea54b9318c4072025236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammo: {fileID: 161052, guid: 1abb98b0b9d390444ae542340a82a335, type: 2}
+  ammoSize: 0
+  ammoDistanceFromShooter: 0
+  waitUntilFire: 0
 --- !u!212 &21254784
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -18,7 +18,7 @@ public class EnemyHealth : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D coll){
-		if (coll.transform.tag == "Enemy"){
+		if (coll.transform.tag == "NormalBullet"){
 			if (health > 1){
 				hp--;
 			} else {
@@ -28,7 +28,7 @@ public class EnemyHealth : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll){
-		if (coll.transform.tag == "Enemy"){
+		if (coll.transform.tag == "NormalBullet"){
 			if (health > 1){
 				hp--;
 			} else {
