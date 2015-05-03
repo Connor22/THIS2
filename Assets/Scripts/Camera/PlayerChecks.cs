@@ -23,6 +23,9 @@ public class PlayerChecks : MonoBehaviour {
 	private int hasJumpOrig;
 
 	void Awake(){
+
+		debugRun();
+
 		sounds = GetComponents<AudioSource>();
 		pActions = GameObject.Find("Player").GetComponent<PlayerActions>();
 
@@ -102,6 +105,10 @@ public class PlayerChecks : MonoBehaviour {
 			revertProcess();
 			Application.LoadLevel(Application.loadedLevelName);
 		}
+	}
+
+	void debugRun(){
+		PlayerPrefs.SetInt("maxUses", 15);
 	}
 	
 }

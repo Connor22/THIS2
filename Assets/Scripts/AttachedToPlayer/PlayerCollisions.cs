@@ -2,16 +2,22 @@
 using System.Collections;
 
 public class PlayerCollisions: MonoBehaviour {
-	
-	public bool touchingDoor = false;
 
 	private AudioSource[] sounds;
 	private AudioSource gemSound;
 	private AudioSource specialGemSound;
 	private AudioSource hitSound;
-	private GameObject currentDoor;
 	private PlayerChecks pCheck;
 	private PlayerActions pShoot;
+
+	private bool touchingDoor = false;
+	private GameObject currentDoor;
+
+	private bool isTouchingGem = false;
+	private GameObject currentGem;
+
+	private bool isTouchingBigGem = false;
+	private GameObject currentBigGem;
 
 	void Awake(){
 		sounds = GetComponents<AudioSource>();
@@ -31,9 +37,8 @@ public class PlayerCollisions: MonoBehaviour {
 				touchingDoor = true;
 				break;
 			case "Gem":
-				pShoot.removeUses(-10f);
-				Destroy(coll.gameObject);
-				gemSound.Play ();
+				isTouchingGem = true;
+				currentGem = coll.gameObject;
 				break;
 			case "JumpGem":
 				pCheck.gotJump();
@@ -54,12 +59,11 @@ public class PlayerCollisions: MonoBehaviour {
 				specialGemSound.Play ();
 				break;
 			case "BigGem":
-				pCheck.increaseMaxUses(5);
-				pShoot.removeUses(-5f);
-				Destroy(coll.gameObject);
-				specialGemSound.Play ();
+				currentBigGem = coll.gameObject;
+				isTouchingBigGem = true;
 				break;
 			case "Enemy":
+			case "EnemyBullet":
 				if (!(gameObject.tag == "Shield")){
 					LoseLife();
 				}	
@@ -75,9 +79,22 @@ public class PlayerCollisions: MonoBehaviour {
 
 	
 	void OnTriggerExit2D(Collider2D coll){
-		if (coll.gameObject.tag == "Door"){
+		switch (coll.gameObject.tag)
+		{
+		case "Door":
 			currentDoor = null;
 			touchingDoor = false;
+			break;
+		case "Gem":
+			currentGem = null;
+			isTouchingGem = false;
+			break;
+		case "BigGem":
+			currentBigGem = null;
+			isTouchingBigGem = false;
+			break;
+		default:
+			break;
 		}
 	}
 
@@ -95,6 +112,19 @@ public class PlayerCollisions: MonoBehaviour {
 	void Update(){
 		if (Input.GetKey( KeyCode.Space ) && touchingDoor){
 			Application.LoadLevel(currentDoor.GetComponent<DoorName>().doorName);
+		}
+		if (isTouchingBigGem && !(gameObject.tag == "Shield")){
+			pCheck.increaseMaxUses(5);
+			pShoot.removeUses(-5f);
+			Destroy(currentBigGem);
+			specialGemSound.Play ();
+			isTouchingBigGem = false;
+		}
+		if (isTouchingGem && !(gameObject.tag == "Shield")){
+			pShoot.removeUses(-10f);
+			Destroy(currentGem);
+			gemSound.Play ();
+			isTouchingGem = false;
 		}
 	}
 }
