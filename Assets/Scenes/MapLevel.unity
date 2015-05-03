@@ -508,6 +508,14 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 2078348388}
+    - target: {fileID: 11485852, guid: 77bae3de7679ceb4aa3ead8cbd4da2b3, type: 2}
+      propertyPath: currentMaxUses
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256726, guid: 77bae3de7679ceb4aa3ead8cbd4da2b3, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f6fd191b33a81fb4fa1a38da92e2daa2, type: 3}
     m_RemovedComponents:
     - {fileID: 11400330, guid: 77bae3de7679ceb4aa3ead8cbd4da2b3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 77bae3de7679ceb4aa3ead8cbd4da2b3, type: 2}
@@ -13416,23 +13424,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 409166, guid: d6fb4cf0850bafd468c6ca662d156133, type: 2}
       propertyPath: m_RootOrder
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412022, guid: d6fb4cf0850bafd468c6ca662d156133, type: 2}
-      propertyPath: max_shot
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412022, guid: d6fb4cf0850bafd468c6ca662d156133, type: 2}
-      propertyPath: delay
-      value: .300000012
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412022, guid: d6fb4cf0850bafd468c6ca662d156133, type: 2}
-      propertyPath: shot_cost
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11412022, guid: d6fb4cf0850bafd468c6ca662d156133, type: 2}
-      propertyPath: shield_cost
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6fb4cf0850bafd468c6ca662d156133, type: 2}
@@ -17738,7 +17730,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22480346, guid: 2f6e3d97dc453c84e958ecbb5bd63fa9, type: 2}
       propertyPath: m_RootOrder
-      value: 23
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 22480346, guid: 2f6e3d97dc453c84e958ecbb5bd63fa9, type: 2}
       propertyPath: m_AnchoredPosition.x

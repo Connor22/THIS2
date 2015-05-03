@@ -38,8 +38,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 487076}
   - 212: {fileID: 21274050}
-  - 61: {fileID: 6117414}
-  - 114: {fileID: 11464682}
   m_Layer: 12
   m_Name: Shield
   m_TagString: Untagged
@@ -87,19 +85,6 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &6117414
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177006}
-  m_Enabled: 0
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: .200000003, y: .200000003}
 --- !u!61 &6155168
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -557,27 +542,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammo: {fileID: 191342, guid: e004c875d7488544bacfcc3e857b2258, type: 2}
   shield: {fileID: 177006}
-  delay: 0
-  max_shot: 100000
+  delay: .300000012
+  max_shot: 10
   ammoSize: 3
   state: 0
-  shot_cost: 0
+  shot_cost: 1
   jump_cost: 2
-  shield_cost: 1
-  total_uses: 0
-  uses_left: 0
---- !u!114 &11464682
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177006}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5359d732ea84b7743ae7bac74765de5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 0}
+  shield_cost: 2
 --- !u!114 &11465742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -636,7 +607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de4bf565142b5449b95fd45197b10c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touchingDoor: 0
 --- !u!114 &11483584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -652,6 +622,7 @@ MonoBehaviour:
   runSpeed: 5
   jumpHeight: 3
   extraSpeedOnJump: 3
+  extraNullSpeed: 2.5
 --- !u!212 &21274050
 SpriteRenderer:
   m_ObjectHideFlags: 1

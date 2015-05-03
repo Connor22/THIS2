@@ -21,11 +21,6 @@ public class PlayerActions : MonoBehaviour {
 	public float shot_cost;
 	public float jump_cost;
 	public float shield_cost; 
-	
-	public float total_uses;
-
-	[HideInInspector]
-	public float uses_left;
 
 	private PlayerChecks pCheck;
 	private float timer;
@@ -45,12 +40,15 @@ public class PlayerActions : MonoBehaviour {
 
 		timer = 0;
 		state = Its.Null;
-		uses_left = total_uses;
-		removeUses(0f);
+	}
+
+	void Start(){
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		removeUses(0f);
 
 		if (Input.GetKeyDown(KeyCode.Alpha1)){
 			nullForm();
@@ -62,13 +60,13 @@ public class PlayerActions : MonoBehaviour {
 			shotForm();
 		}
 
-		if (state == Its.Shot && (uses_left - shot_cost) > 0){
+		if (state == Its.Shot && (pCheck.uses_left - shot_cost) > 0){
 			if (timer > 0) {
 				timer -= Time.deltaTime;
 			} else if (Input.GetAxis("Fire") > 0 && ForwardShot.bullet_count < max_shot) {
 				fire();
 			}
-		} else if (state == Its.Shield && (uses_left - shield_cost) > 0) {
+		} else if (state == Its.Shield && (pCheck.uses_left - shield_cost) > 0) {
 			if (Input.GetKeyDown(KeyCode.Space) && !shield.activeSelf){
 				shield.SetActive(true);
 				isShieldActive = true;
@@ -90,7 +88,7 @@ public class PlayerActions : MonoBehaviour {
 
 		if (shieldtimer > 1f){
 			removeUses(shield_cost);
-			print(uses_left);
+			print(pCheck.uses_left);
 			shieldtimer = 0f;
 		}
 	}
@@ -142,19 +140,24 @@ public class PlayerActions : MonoBehaviour {
 
 	public void removeUses(float cost){
 
-		uses_left -= cost;
+		int uses_left;
+		int currentMaxUses;
+		int hundreds;
+		int tens;
+		int singles;
+		uses_left = pCheck.getUsesLeft();
+		currentMaxUses = pCheck.getMaxUses();
 
-		print (uses_left);
-		print (pCheck.currentMaxUses);
-
-		if (uses_left > pCheck.currentMaxUses){
-			uses_left = pCheck.currentMaxUses;
+		uses_left -= (int)cost;
+		if (uses_left > currentMaxUses){
+			uses_left = currentMaxUses;
 		}
 
-		int uses_left_int = (int)uses_left;
-		int hundreds = uses_left_int / 100;
-		int tens = uses_left_int / 10 - hundreds * 10;
-		int singles = uses_left_int - hundreds * 100 - tens * 10;
+		pCheck.setUsesLeft(uses_left);
+
+		hundreds = uses_left / 100;
+		tens = uses_left / 10 - hundreds * 10;
+		singles = uses_left - hundreds * 100 - tens * 10;
 		GameObject.Find("Hundreds").GetComponent<DigitUpdater>().updateDigit(hundreds);
 		GameObject.Find("Tens").GetComponent<DigitUpdater>().updateDigit(tens);
 		GameObject.Find("Singles").GetComponent<DigitUpdater>().updateDigit(singles);
@@ -167,8 +170,12 @@ public class PlayerActions : MonoBehaviour {
 		isShieldActive = false;
 	}
 
+	IEnumerator wait(int seconds){
+		yield return new WaitForSeconds(seconds);
+	}
+
 	public void JumpCounter(){
 		removeUses(jump_cost);
-		print ("Jump - Uses left: " + uses_left);
+		print ("Jump - Uses left: " + pCheck.uses_left);
 	}
 }

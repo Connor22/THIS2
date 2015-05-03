@@ -7,7 +7,9 @@ public class PlayerChecks : MonoBehaviour {
 	public bool hasShield;
 	public bool hasShot;
 
+	[HideInInspector]
 	public int currentMaxUses;
+	public int uses_left = 999;
 
 	private AudioSource[] sounds;
 	private AudioSource levelMusic;
@@ -24,6 +26,9 @@ public class PlayerChecks : MonoBehaviour {
 
 	void Awake(){
 
+		if (PlayerPrefs.GetInt("justLoaded") == 1)
+			quitProcess();
+
 		sounds = GetComponents<AudioSource>();
 		pActions = GameObject.Find("Player").GetComponent<PlayerActions>();
 
@@ -34,8 +39,7 @@ public class PlayerChecks : MonoBehaviour {
 
 		oldMaxUses = PlayerPrefs.GetInt("maxUses");
 		currentMaxUses = oldMaxUses;
-		pActions.total_uses = currentMaxUses;
-		pActions.uses_left = currentMaxUses;
+		uses_left = currentMaxUses;
 
 		hasShotOrig = (int)PlayerPrefs.GetInt("hasShot");
 		hasShieldOrig = (int)PlayerPrefs.GetInt("hasShield");
@@ -44,8 +48,6 @@ public class PlayerChecks : MonoBehaviour {
 		hasShot = (hasShotOrig == 1);
 		hasShield = (hasShieldOrig == 1);
 		hasJump = (hasJumpOrig == 1);
-
-		pActions.removeUses(0f);
 	}
 
 	public void gotJump(){
@@ -76,6 +78,7 @@ public class PlayerChecks : MonoBehaviour {
 		hasJump = false;
 		hasShot = false;
 		hasShield = false;
+		print("Reset");
 	}
 
 	public void revertProcess(){
@@ -99,6 +102,23 @@ public class PlayerChecks : MonoBehaviour {
 		enemyShoot.Play();
 	}
 
+	public int getUsesLeft(){
+		print (uses_left);
+		return uses_left;
+	}
+
+	public void setUsesLeft(int value){
+		uses_left = value;
+	}
+
+	public int getMaxUses(){
+		return currentMaxUses;
+	}
+	
+	public void setMaxUses(int value){
+		currentMaxUses = value;
+	}
+
 	void Update () {
 		if (Input.GetKey( KeyCode.Escape )){
 			quitProcess();
@@ -106,6 +126,8 @@ public class PlayerChecks : MonoBehaviour {
 		} else if (Input.GetKey( KeyCode.R )){
 			revertProcess();
 			Application.LoadLevel(Application.loadedLevelName);
+		} else if (Input.GetKey( KeyCode.M )){
+			quitProcess();
 		}
 	}
 }

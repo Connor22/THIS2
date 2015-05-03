@@ -1475,8 +1475,6 @@ MonoBehaviour:
   shot_cost: 0
   jump_cost: 2
   shield_cost: 1
-  total_uses: 0
-  uses_left: 0
 --- !u!114 &638951895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2157,6 +2155,8 @@ GameObject:
   - 92: {fileID: 872384841}
   - 124: {fileID: 872384840}
   - 81: {fileID: 872384839}
+  - 114: {fileID: 872384844}
+  - 114: {fileID: 872384845}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2229,6 +2229,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 18
+--- !u!114 &872384844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 872384838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5215dcff20c09d4daf95c40131007ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &872384845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 872384838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae053d4d96406f346aabc92b68f911d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasJump: 0
+  hasShield: 0
+  hasShot: 0
+  currentMaxUses: 0
+  uses_left: 999
 --- !u!1 &971262434
 GameObject:
   m_ObjectHideFlags: 0
