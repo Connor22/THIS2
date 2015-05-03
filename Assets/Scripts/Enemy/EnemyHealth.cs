@@ -4,18 +4,19 @@ using System.Collections;
 public class EnemyHealth : MonoBehaviour {
 
 	public int health = 1;
+	public GameObject gem;
 
 	private int hp;
 	private PlayerChecks pCheck;
+	private Vector3 spawnPosition;
+	private Quaternion spawnRotation;
 
 	// Use this for initialization
 	void Awake () {
 		hp = health;
 		pCheck = GameObject.Find("Main Camera").GetComponent<PlayerChecks>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+		spawnPosition = transform.position;
+		spawnRotation = transform.rotation;
 	}
 
 	void playSound(){
@@ -51,6 +52,7 @@ public class EnemyHealth : MonoBehaviour {
 				hp--;
 				Debug.Log("After: " + hp);
 			} else {
+				Instantiate(gem, spawnPosition, spawnRotation);
 				Destroy(gameObject);
 			}
 		}

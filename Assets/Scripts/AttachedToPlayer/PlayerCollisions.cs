@@ -116,13 +116,13 @@ public class PlayerCollisions: MonoBehaviour {
 		}
 		if (isTouchingBigGem && !(gameObject.tag == "Shield")){
 			pCheck.increaseMaxUses(5);
-			pShoot.removeUses(-5f);
+			pShoot.removeUses(-10f);
 			Destroy(currentBigGem);
 			specialGemSound.Play ();
 			isTouchingBigGem = false;
 		}
 		if (isTouchingGem && !(gameObject.tag == "Shield")){
-			pShoot.removeUses(-10f);
+			pShoot.removeUses(-5f);
 			Destroy(currentGem);
 			gemSound.Play ();
 			isTouchingGem = false;

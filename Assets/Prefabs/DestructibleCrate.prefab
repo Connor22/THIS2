@@ -19,6 +19,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &191704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 472592}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &445670
 Transform:
   m_ObjectHideFlags: 1
@@ -26,10 +41,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187468}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.84028721, y: -1.83296394, z: 0}
+  m_LocalPosition: {x: 4.97934532, y: -1.82084846, z: 0}
   m_LocalScale: {x: 4.52508783, y: 4.52508783, z: 4.52508783}
-  m_Children: []
+  m_Children:
+  - {fileID: 472592}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &472592
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191704}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 445670}
   m_RootOrder: 0
 --- !u!50 &5083466
 Rigidbody2D:
@@ -71,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  gem: {fileID: 161354, guid: 1f232b30a18355a47a2b301d93dcfda5, type: 2}
 --- !u!212 &21202090
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -24,8 +24,6 @@ public class PlayerChecks : MonoBehaviour {
 
 	void Awake(){
 
-		debugRun();
-
 		sounds = GetComponents<AudioSource>();
 		pActions = GameObject.Find("Player").GetComponent<PlayerActions>();
 
@@ -70,6 +68,11 @@ public class PlayerChecks : MonoBehaviour {
 		PlayerPrefs.SetInt("hasShot", 0);
 		PlayerPrefs.SetInt("hasJump", 0);
 		PlayerPrefs.SetInt("maxUses", 10);
+		PlayerPrefs.SetInt("beatMapLevel", 0);
+		PlayerPrefs.SetInt("beatJumpGemRoom", 0);
+		PlayerPrefs.SetInt("beatShieldGemRoom", 0);
+		PlayerPrefs.SetInt("beatShotGemRoom", 0);
+		PlayerPrefs.SetInt("beatMapSceneB", 0);
 		hasJump = false;
 		hasShot = false;
 		hasShield = false;
@@ -105,9 +108,4 @@ public class PlayerChecks : MonoBehaviour {
 			Application.LoadLevel(Application.loadedLevelName);
 		}
 	}
-
-	void debugRun(){
-		PlayerPrefs.SetInt("maxUses", 15);
-	}
-	
 }
