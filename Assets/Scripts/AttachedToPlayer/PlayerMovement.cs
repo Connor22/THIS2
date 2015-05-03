@@ -7,6 +7,7 @@ public class PlayerMovement: MonoBehaviour
 	public float runSpeed = 8f;
 	public float jumpHeight = 3f;
 	public float extraSpeedOnJump = 5f;
+	public float extraNullSpeed = 2.5f;
 
 	[HideInInspector]
 	private float horizontalSpeed = 0;
@@ -49,9 +50,15 @@ public class PlayerMovement: MonoBehaviour
 			curVelocity.y = 0;
 			hasDoubleJumped = false;
 			finalizedRunSpeed = runSpeed;
+			if (power_up.state == PlayerActions.Its.Null)
+				finalizedRunSpeed += extraNullSpeed;
 		} else {
 			finalizedRunSpeed = runSpeed + extraSpeedOnJump;
+			if (power_up.state == PlayerActions.Its.Null)
+				finalizedRunSpeed += extraNullSpeed / 3;
 		}
+
+
 		
 		if( Input.GetKey( KeyCode.RightArrow ) )
 		{
