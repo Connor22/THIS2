@@ -66,7 +66,7 @@ public class PlayerChecks : MonoBehaviour {
 		PlayerPrefs.SetInt("hasShield", 0);
 		PlayerPrefs.SetInt("hasShot", 0);
 		PlayerPrefs.SetInt("hasJump", 0);
-		PlayerPrefs.SetInt("maxUses", 0);
+		PlayerPrefs.SetInt("maxUses", 10);
 		hasJump = false;
 		hasShot = false;
 		hasShield = false;
@@ -97,7 +97,7 @@ public class PlayerChecks : MonoBehaviour {
 		if (Input.GetKey( KeyCode.Escape )){
 			quitProcess();
 			GameObject.Find("Player").GetComponent<PlayerActions>().nullForm();
-			Application.Quit();
+			//Application.Quit();
 		} else if (Input.GetKey( KeyCode.R )){
 			revertProcess();
 			Application.LoadLevel(Application.loadedLevelName);

@@ -145,6 +145,7 @@ public class PlayerActions : MonoBehaviour {
 		uses_left -= cost;
 
 		print (uses_left);
+		print (pCheck.currentMaxUses);
 
 		if (uses_left > pCheck.currentMaxUses){
 			uses_left = pCheck.currentMaxUses;
