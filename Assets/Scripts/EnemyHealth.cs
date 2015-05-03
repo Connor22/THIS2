@@ -26,4 +26,14 @@ public class EnemyHealth : MonoBehaviour {
 			}
 		}
 	}
+
+	void OnTriggerEnter2D(Collider2D coll){
+		if (coll.transform.tag == "Enemy"){
+			if (health > 1){
+				hp--;
+			} else {
+				Destroy(gameObject);
+			}
+		}
+	}
 }

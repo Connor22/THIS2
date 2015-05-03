@@ -69,12 +69,14 @@ public class PlayerShoot : MonoBehaviour {
 				//shield_instance = (GameObject)Instantiate(shield, transform.position, transform.rotation);
 				//shield_instance.transform.parent = transform;
 				shield.SetActive(true);
-				gameObject.layer = 13;
+				gameObject.tag = "Shield";
+				//gameObject.layer = 13;
 				//shield_instance.SendMessage("SetManager", gameObject);
 			}
 			if (Input.GetKeyUp(KeyCode.Space)){
-				gameObject.layer = 12;
+				//gameObject.layer = 12;
 				DestroyShield();
+				gameObject.tag = "Player";
 			}
 		}
 

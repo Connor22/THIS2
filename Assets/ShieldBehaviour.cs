@@ -12,9 +12,9 @@ public class ShieldBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (gameObject.layer != 12){
+		/*if (gameObject.layer != 12){
 			gameObject.layer = 12;
-		}
+		}*/
 	}
 
 	void OnTriggerEnter2D(Collider2D coll){
