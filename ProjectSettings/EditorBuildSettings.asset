@@ -5,17 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/TestArena/TestArena.unity
-  - enabled: 0
-    path: Assets/Scenes/MapLevel/MapLevel.unity
   - enabled: 1
     path: Assets/Scenes/MapLevel.unity
-  - enabled: 1
-    path: Assets/Scenes/TestArena.unity
   - enabled: 1
     path: Assets/Scenes/JumpGemRoom.unity
   - enabled: 1
     path: Assets/Scenes/ShieldGemRoom.unity
   - enabled: 1
     path: Assets/Scenes/ShotGemRoom.unity
+  - enabled: 1
+    path: Assets/Scenes/MapSceneB.unity
