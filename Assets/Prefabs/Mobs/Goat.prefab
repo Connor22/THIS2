@@ -13,6 +13,7 @@ GameObject:
   - 61: {fileID: 6149740}
   - 50: {fileID: 5025692}
   - 114: {fileID: 11497202}
+  - 114: {fileID: 11492076}
   m_Layer: 10
   m_Name: Goat
   m_TagString: Enemy
@@ -27,8 +28,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183104}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.47599983, y: .888000011, z: 0}
-  m_LocalScale: {x: 2, y: 5, z: 1}
+  m_LocalPosition: {x: -14.1269388, y: -12.7970209, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -57,9 +58,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: .0199999996, y: 0}
   serializedVersion: 2
-  m_Size: {x: .159999996, y: .159999996}
+  m_Size: {x: .170000002, y: .319999993}
 --- !u!114 &11412996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,6 +73,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 4
+--- !u!114 &11492076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab28842c134752459f541bb6a2a2b9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultIsRight: 0
+  faceRight: 0
 --- !u!114 &11497202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,7 +123,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e752ae9b89d6baa47a8114d70017687f, type: 3}
+  m_Sprite: {fileID: 21300002, guid: b0c86fbd1883d9f45837e3b9d8018188, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
