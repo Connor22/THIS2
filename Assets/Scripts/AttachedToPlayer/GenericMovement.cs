@@ -79,7 +79,7 @@ public class GenericMovement: MonoBehaviour
 			jumpSound.Play();
 			curVelocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );
 			// anim.Play( Animator.StringToHash( "Jump" ) );
-		} else if ( Input.GetKeyDown( KeyCode.UpArrow ) && !hasDoubleJumped && power_up.state == PlayerShoot.Its.Jump && (power_up.uses_left - power_up.jump_cost) > 0 ) {) {
+		} else if ( Input.GetKeyDown( KeyCode.UpArrow ) && !hasDoubleJumped && power_up.state == PlayerShoot.Its.Jump && (power_up.uses_left - power_up.jump_cost) > 0 )  {
 			dbljumpSound.Play();
 			hasDoubleJumped = true;
 			curVelocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );

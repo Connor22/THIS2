@@ -22,4 +22,10 @@ public class ShieldBehaviour : MonoBehaviour {
 			manager.ShieldCounter();
 		}
 	}
+
+	void OnCollisionEnter2D(Collision2D coll){
+		if (coll.transform.tag == "EnemyBullet" || coll.transform.tag == "Enemy"){
+			manager.ShieldCounter();
+		}
+	}
 }
