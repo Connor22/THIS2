@@ -16,12 +16,11 @@ GameObject:
   - 114: {fileID: 11412022}
   - 114: {fileID: 11408830}
   - 114: {fileID: 11476082}
-  - 82: {fileID: 8265844}
-  - 82: {fileID: 8223224}
-  - 212: {fileID: 21297262}
+  - 82: {fileID: 8221866}
+  - 82: {fileID: 8215154}
   m_Layer: 12
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,7 +38,7 @@ GameObject:
   - 114: {fileID: 11464682}
   m_Layer: 12
   m_Name: Shield
-  m_TagString: Shield
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,9 +89,9 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177006}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -109,8 +108,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: -.100000001, y: -.075000003}
   serializedVersion: 2
-  m_Size: {x: .699999988, y: .800000012}
---- !u!82 &8223224
+  m_Size: {x: 1, y: 1}
+--- !u!82 &8215154
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -179,7 +178,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!82 &8265844
+--- !u!82 &8221866
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -305,7 +304,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177006}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5359d732ea84b7743ae7bac74765de5a, type: 3}
   m_Name: 
