@@ -7,10 +7,9 @@ public class GenericMovement: MonoBehaviour
 	public float runSpeed = 8f;
 	public float jumpHeight = 3f;
 
-	public AudioClip jumpClip;
-
 	[HideInInspector]
 	private float horizontalSpeed = 0;
+	private float finalizedRunSpeed;
 	
 	private CharacterController2D charControl;
 	private Animator anim;
@@ -21,18 +20,20 @@ public class GenericMovement: MonoBehaviour
 	private Vector3 curVelocity;
 	private PlayerShoot power_up;
 	private bool hasDoubleJumped;
+	private bool idleStarted;
 	private float groundDamping = 20f; // how fast do we change direction? higher means faster
 	private float inAirDamping = 5f;
 	
 	
 	void Awake()
 	{
-		//anim = GetComponent<Animator>();
+		anim = GetComponent<Animator>();
 		Sounds = GetComponents<AudioSource>();
 		power_up = gameObject.GetComponent<PlayerShoot>();
 		charControl = GetComponent<CharacterController2D>();
 		jumpSound = Sounds[0];
 		dbljumpSound = Sounds[1];
+		idleStarted = false;
 	}
 	
 	// the Update loop contains a very simple example of moving the character around and controlling the animation
@@ -44,6 +45,9 @@ public class GenericMovement: MonoBehaviour
 		if( charControl.isGrounded ){
 			curVelocity.y = 0;
 			hasDoubleJumped = false;
+			finalizedRunSpeed = runSpeed;
+		} else {
+			finalizedRunSpeed = runSpeed + 5;
 		}
 		
 		if( Input.GetKey( KeyCode.RightArrow ) )
@@ -52,8 +56,9 @@ public class GenericMovement: MonoBehaviour
 			if( transform.localScale.x < 0f )
 				transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z );
 			
-			//if( charControl.isGrounded )
-				// anim.Play( Animator.StringToHash( "Run" ) );
+			if( charControl.isGrounded )
+				anim.Play( Animator.StringToHash( "Walk" ) );
+				idleStarted = false;
 		}
 		else if( Input.GetKey( KeyCode.LeftArrow ) )
 		{
@@ -61,15 +66,18 @@ public class GenericMovement: MonoBehaviour
 			if( transform.localScale.x > 0f )
 				transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z );
 			
-			//if( charControl.isGrounded )
-				// anim.Play( Animator.StringToHash( "Run" ) );
+			if( charControl.isGrounded )
+				anim.Play( Animator.StringToHash( "Walk" ) );
+				idleStarted = false;
 		}
 		else
 		{
 			horizontalSpeed = 0;
 			
-			//if( charControl.isGrounded )
-				// anim.Play( Animator.StringToHash( "Idle" ) );
+			if( charControl.isGrounded && !idleStarted ){
+				anim.Play( Animator.StringToHash( "Idle" ) );
+				idleStarted = true;
+			}
 		}
 		
 		
@@ -78,6 +86,7 @@ public class GenericMovement: MonoBehaviour
 		{
 			jumpSound.Play();
 			curVelocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );
+			idleStarted = false;
 			// anim.Play( Animator.StringToHash( "Jump" ) );
 		} else if ( Input.GetKeyDown( KeyCode.UpArrow ) && !hasDoubleJumped && power_up.state == PlayerShoot.Its.Jump && (power_up.uses_left - power_up.jump_cost) > 0 )  {
 			dbljumpSound.Play();
@@ -93,7 +102,7 @@ public class GenericMovement: MonoBehaviour
 		
 		// apply horizontal speed smoothing it
 		var smoothedMovementFactor = charControl.isGrounded ? groundDamping : inAirDamping; // how fast do we change direction?
-		curVelocity.x = Mathf.Lerp( curVelocity.x, horizontalSpeed * runSpeed, Time.deltaTime * smoothedMovementFactor );
+		curVelocity.x = Mathf.Lerp( curVelocity.x, horizontalSpeed * finalizedRunSpeed , Time.deltaTime * smoothedMovementFactor );
 		
 		// apply gravity before moving
 		curVelocity.y += gravity * Time.deltaTime;
