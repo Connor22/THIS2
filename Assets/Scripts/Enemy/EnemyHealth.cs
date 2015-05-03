@@ -24,10 +24,15 @@ public class EnemyHealth : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.transform.tag == "NormalBullet"){
-			Destroy(coll.gameObject);
 			playSound();
-			if (health > 1){
+			ForwardShot bullet = coll.gameObject.GetComponent<ForwardShot>();
+			if (bullet != null){
+				bullet.DestroyBullet();
+			}
+			Debug.Log("Before: " + hp);
+			if (hp > 1){
 				hp--;
+				Debug.Log("After: " + hp);
 			} else {
 				Destroy(gameObject);
 			}
@@ -41,8 +46,10 @@ public class EnemyHealth : MonoBehaviour {
 			if (bullet != null){
 				bullet.DestroyBullet();
 			}
-			if (health > 1){
+			Debug.Log("Before: " + hp);
+			if (hp > 1){
 				hp--;
+				Debug.Log("After: " + hp);
 			} else {
 				Destroy(gameObject);
 			}
