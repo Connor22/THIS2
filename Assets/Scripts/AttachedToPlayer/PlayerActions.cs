@@ -152,12 +152,4 @@ public class PlayerActions : MonoBehaviour {
 		removeUses(jump_cost);
 		print ("Jump - Uses left: " + uses_left);
 	}
-
-	public void ShieldCounter(){
-		removeUses(shield_cost);
-		print ("Shield - Uses left: " + uses_left);
-		if ((uses_left - shield_cost) > 0){
-			DestroyShield();
-		}
-	}
 }

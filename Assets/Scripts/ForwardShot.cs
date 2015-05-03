@@ -27,7 +27,7 @@ public class ForwardShot : MonoBehaviour {
 		GetComponent<Rigidbody2D>().velocity = new Vector2(tempSpeed, 0f); 
 	}
 
-	void DestroyBullet(){
+	public void DestroyBullet(){
 		if (gameObject.tag == "NormalBullet")
 			bullet_count--;
 		Destroy(gameObject);

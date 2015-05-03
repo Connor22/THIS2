@@ -15,3 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/TestArena.unity
   - enabled: 1
     path: Assets/Scenes/JumpGemRoom.unity
+  - enabled: 1
+    path: Assets/Scenes/ShieldGemRoom.unity
+  - enabled: 1
+    path: Assets/Scenes/ShotGemRoom.unity

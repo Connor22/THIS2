@@ -14,7 +14,6 @@ GameObject:
   - 50: {fileID: 5055842}
   - 114: {fileID: 11483584}
   - 114: {fileID: 11412022}
-  - 114: {fileID: 11408830}
   - 114: {fileID: 11476082}
   - 82: {fileID: 8221866}
   - 82: {fileID: 8215154}
@@ -545,19 +544,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11408830
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee9648ad05d29e14bbc201a3c1abea6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  continues: 1
 --- !u!114 &11412022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -570,7 +556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: {fileID: 191342, guid: e004c875d7488544bacfcc3e857b2258, type: 2}
-  shield: {fileID: 0}
+  shield: {fileID: 177006}
   delay: 0
   max_shot: 100000
   ammoSize: 3
@@ -591,6 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5359d732ea84b7743ae7bac74765de5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
 --- !u!114 &11465742
 MonoBehaviour:
   m_ObjectHideFlags: 1

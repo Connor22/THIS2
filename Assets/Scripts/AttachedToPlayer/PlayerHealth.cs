@@ -44,24 +44,7 @@ public class PlayerHealth : MonoBehaviour {
 		Debug.Log("Collision with: " + coll.gameObject.tag);
 	}*/
 
-	void OnTriggerEnter2D(Collider2D coll){
-		if (coll.transform.tag == "Death" || coll.transform.tag == "Enemy" || coll.transform.tag == "EnemyBullet"){
-			if ( coll.gameObject.tag == "EnemyBullet" ){
-				ForwardShot bullet = coll.gameObject.GetComponent<ForwardShot>();
-				if (bullet != null){
-					bullet.DestroyBullet();
-				}
-			}
-			if (gameObject.tag == "Player"){
-				LoseLife();
-			} else if (gameObject.tag == "Shield"){
-				power_up.ShieldCounter();
-			}
-		}
-		Debug.Log("Collision with: " + coll.gameObject.tag);
-	}
-
-	void LoseLife(){
+	public void LoseLife(){
 		//if (lives > 0){
 			transform.position = start;
 			//lives--;
