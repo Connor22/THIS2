@@ -33,8 +33,10 @@ public class GenericMovement: MonoBehaviour
 		// grab our current curVelocity to use as a base for all calculations
 		curVelocity = charControl.velocity;
 		
-		if( charControl.isGrounded )
+		if( charControl.isGrounded ){
 			curVelocity.y = 0;
+			hasDoubleJumped = false;
+		}
 		
 		if( Input.GetKey( KeyCode.RightArrow ) )
 		{
@@ -66,7 +68,6 @@ public class GenericMovement: MonoBehaviour
 		// we can only jump whilst grounded
 		if( charControl.isGrounded && Input.GetKeyDown( KeyCode.UpArrow ) )
 		{
-			hasDoubleJumped = false;
 			curVelocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );
 			// anim.Play( Animator.StringToHash( "Jump" ) );
 		} else if ( Input.GetKeyDown( KeyCode.UpArrow ) && !hasDoubleJumped && power_up.state == PlayerShoot.Its.Jump && (power_up.uses_left - power_up.jump_cost) > 0 ) {
