@@ -7,7 +7,11 @@ public class PlayerChecks : MonoBehaviour {
 	public bool hasShield;
 	public bool hasShot;
 
+	private AudioSource levelMusic;
+
 	void Awake(){
+		levelMusic = GetComponent<AudioSource>();
+
 		hasShot = (PlayerPrefs.GetInt("hasShot") == 1);
 		hasShield = (PlayerPrefs.GetInt("hasShield") == 1);
 		hasJump = (PlayerPrefs.GetInt("hasJump") == 1);

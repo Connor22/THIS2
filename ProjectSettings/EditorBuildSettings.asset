@@ -14,4 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestArena.unity
   - enabled: 1
-    path: Assets/Scenes/MapSceneB.unity
+    path: Assets/Scenes/JumpGemRoom.unity

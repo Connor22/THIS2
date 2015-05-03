@@ -51,7 +51,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.97000003, y: .890999973, z: 0}
+  m_LocalPosition: {x: .239818096, y: .902252793, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children:
   - {fileID: 487076}
@@ -121,7 +121,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5eb83e805d9f13c44b91ae4404eb3080, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -190,8 +190,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0ef4fd51388314a4eab8630be5a10637, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: .5
+  m_Pitch: 1.10000002
   Loop: 0
   Mute: 0
   Priority: 128
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 105342}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29092f6246eb4e74098f83ceae3c34c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0516b11ba3c0f4a49ab3e4b12315722d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: {fileID: 191342, guid: e004c875d7488544bacfcc3e857b2258, type: 2}
@@ -294,9 +294,9 @@ MonoBehaviour:
   delay: 0
   max_shot: 100
   state: 0
-  total_uses: 100
+  total_uses: 10
   shot_cost: 0
-  jump_cost: 0
+  jump_cost: 2
   shield_cost: 0
   uses_left: 0
 --- !u!114 &11464682
