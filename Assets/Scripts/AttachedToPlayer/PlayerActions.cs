@@ -52,11 +52,13 @@ public class PlayerActions : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyDown(KeyCode.Alpha1) && pCheck.hasJump){
+		if (Input.GetKeyDown(KeyCode.Alpha1)){
+			nullForm();
+		} else if (Input.GetKeyDown(KeyCode.Alpha2) && pCheck.hasJump){
 			jumpForm();
-		} else if (Input.GetKeyDown(KeyCode.Alpha2) && pCheck.hasShield){
+		} else if (Input.GetKeyDown(KeyCode.Alpha3) && pCheck.hasShield){
 			shieldForm();
-		} else if (Input.GetKeyDown(KeyCode.Alpha3) && pCheck.hasShot){
+		} else if (Input.GetKeyDown(KeyCode.Alpha4) && pCheck.hasShot){
 			shotForm();
 		}
 
