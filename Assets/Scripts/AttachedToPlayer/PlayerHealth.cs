@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D coll){
-		if (coll.transform.tag == "Enemy"){
+		if (coll.transform.tag == "Enemy" || coll.transform.tag == "EnemyBullet"){
 			if (health > 1){
 				hp--;
 			} else {

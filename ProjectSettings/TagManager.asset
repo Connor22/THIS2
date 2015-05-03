@@ -10,6 +10,7 @@ TagManager:
   - Death
   - EnemyBullet
   - Player
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Trigger
   - 
   - Player
-  - 
+  - Shield
   - 
   - 
   - 
