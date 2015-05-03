@@ -10,15 +10,20 @@ public class PlayerActions : MonoBehaviour {
 
 	public GameObject ammo;
 	public GameObject shield;
+
 	public float delay;
 	public int max_shot = 1;
 	public float ammoSize;
+
+	[HideInInspector]
 	public Its state = Its.Shot;
 
-	public float total_uses = 100;
 	public float shot_cost;
 	public float jump_cost;
 	public float shield_cost; 
+
+	[HideInInspector]
+	public float total_uses;
 
 	[HideInInspector]
 	public float uses_left;
@@ -27,9 +32,16 @@ public class PlayerActions : MonoBehaviour {
 	private float timer;
 	//private GameObject shield_instance = null;
 
+	private AudioSource[] Sounds;
+	private AudioSource shotSound;
+	
 	// Use this for initialization
 	void Awake () {
+		Sounds = GetComponents<AudioSource>();
+		shotSound = Sounds[5];
+
 		pCheck = GameObject.Find("Main Camera").GetComponent<PlayerChecks>();
+		total_uses = pCheck.currentMaxUses;
 		timer = 0;
 		state = Its.Null;
 		uses_left = total_uses;
@@ -96,6 +108,7 @@ public class PlayerActions : MonoBehaviour {
 	}
 	
 	void fire(){
+		shotSound.Play();
 		float directionFaced = transform.localScale.x / Mathf.Abs(transform.localScale.x);
 		Vector3 tempVec = transform.position;
 		if (directionFaced > 0){
@@ -113,7 +126,13 @@ public class PlayerActions : MonoBehaviour {
 	}
 
 	public void removeUses(float cost){
+
 		uses_left -= cost;
+
+		if (uses_left > pCheck.currentMaxUses){
+			uses_left = pCheck.currentMaxUses;
+		}
+
 		int uses_left_int = (int)uses_left;
 		int hundreds = uses_left_int / 100;
 		int tens = uses_left_int / 10 - hundreds * 10;
@@ -135,7 +154,7 @@ public class PlayerActions : MonoBehaviour {
 	}
 
 	public void ShieldCounter(){
-		uses_left -= shield_cost;
+		removeUses(shield_cost);
 		print ("Shield - Uses left: " + uses_left);
 		if ((uses_left - shield_cost) > 0){
 			DestroyShield();

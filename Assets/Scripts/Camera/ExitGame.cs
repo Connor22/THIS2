@@ -8,7 +8,9 @@ public class ExitGame : MonoBehaviour {
 		if (Input.GetKey( KeyCode.Escape )){
 			GetComponent<PlayerChecks>().quitProcess();
 			GameObject.Find("Player").GetComponent<PlayerActions>().nullForm();
-			//Application.Quit();
+			Application.Quit();
+		} else if (Input.GetKey( KeyCode.R )){
+			Application.LoadLevel(Application.loadedLevelName);
 		}
 	}
 }

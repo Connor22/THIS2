@@ -13,6 +13,8 @@ TagManager:
   - Shield
   - Gem
   - JumpGem
+  - ShieldGem
+  - BigGem
   layers:
   - Default
   - TransparentFX
@@ -49,4 +51,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Overlay
+    uniqueID: 1534570211
     locked: 0

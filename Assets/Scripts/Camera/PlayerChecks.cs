@@ -7,10 +7,24 @@ public class PlayerChecks : MonoBehaviour {
 	public bool hasShield;
 	public bool hasShot;
 
+	public int currentMaxUses;
+
+	private AudioSource[] sounds;
 	private AudioSource levelMusic;
 
+	[HideInInspector]
+	private AudioSource enemyHit;
+	private AudioSource enemyShoot;
+
 	void Awake(){
-		levelMusic = GetComponent<AudioSource>();
+		sounds = GetComponents<AudioSource>();
+
+		levelMusic = sounds[0];
+
+		enemyHit = sounds[1];
+		enemyShoot = sounds[2];
+
+		currentMaxUses = PlayerPrefs.GetInt("maxUses");
 
 		hasShot = (PlayerPrefs.GetInt("hasShot") == 1);
 		hasShield = (PlayerPrefs.GetInt("hasShield") == 1);
@@ -39,6 +53,19 @@ public class PlayerChecks : MonoBehaviour {
 		hasJump = false;
 		hasShot = false;
 		hasShield = false;
+	}
+
+	public void increaseMaxUses(int num){
+		currentMaxUses += num;
+		PlayerPrefs.SetInt("maxUses", currentMaxUses);
+	}
+
+	public void playEnemyHit(){
+		enemyHit.Play();
+	}
+
+	public void playEnemyShoot(){
+		enemyShoot.Play();
 	}
 	
 }

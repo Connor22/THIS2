@@ -10,6 +10,8 @@ public class PlayerHealth : MonoBehaviour {
 	private int lives;
 	private Vector3 start;
 	private PlayerActions power_up;
+	private AudioSource[] Sounds;
+	private AudioSource hitSound;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +19,9 @@ public class PlayerHealth : MonoBehaviour {
 		lives = continues;
 		start = transform.position;
 		power_up = gameObject.GetComponent<PlayerActions>();
+
+		Sounds = GetComponents<AudioSource>();
+		hitSound = Sounds[4];
 	}
 	
 	// Update is called once per frame
@@ -56,5 +61,7 @@ public class PlayerHealth : MonoBehaviour {
 			//lives--;
 			hp = health;
 		//}
+
+		hitSound.Play();
 	}
 }
