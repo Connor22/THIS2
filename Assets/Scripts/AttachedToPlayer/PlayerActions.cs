@@ -12,12 +12,15 @@ public class PlayerActions : MonoBehaviour {
 	public GameObject shield;
 	public float delay;
 	public int max_shot = 1;
+	public float ammoSize;
 	public Its state = Its.Shot;
 
 	public float total_uses = 100;
 	public float shot_cost;
 	public float jump_cost;
 	public float shield_cost; 
+
+	[HideInInspector]
 	public float uses_left;
 
 	private PlayerChecks pCheck;
@@ -102,6 +105,9 @@ public class PlayerActions : MonoBehaviour {
 		}
 		GameObject ammoInstance = (GameObject)Instantiate(ammo, tempVec, transform.rotation);
 		ammoInstance.GetComponent<ForwardShot>().SendMessage("setDirection", directionFaced);
+		Vector3 ammoscale = ammoInstance.transform.localScale;
+		ammoscale.x = ammoscale.y = ammoSize;
+		ammoInstance.transform.localScale = ammoscale;
 		timer = delay;
 		removeUses(shot_cost);
 	}

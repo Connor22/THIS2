@@ -7,6 +7,7 @@ public class EnemyFire : MonoBehaviour {
 	public float ammoSize;
 	public float ammoDistanceFromShooter;
 	public float waitUntilFire;
+	public float delayBetweenShots;
 
 	// Update is called once per frame
 	void Awake () {
@@ -24,7 +25,9 @@ public class EnemyFire : MonoBehaviour {
 		StartCoroutine(fireWait());
 	}
 
-	IEnumerator fireWait(float seconds = 2){
+	IEnumerator fireWait(float seconds = 0){
+		if (seconds == 0)
+			seconds = delayBetweenShots;
 		yield return new WaitForSeconds(seconds);
 		fire ();
 	}

@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.transform.tag == "NormalBullet"){
+			Destroy(coll.gameObject);
 			if (health > 1){
 				hp--;
 			} else {
@@ -29,6 +30,7 @@ public class EnemyHealth : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll){
 		if (coll.transform.tag == "NormalBullet"){
+			Destroy(coll.gameObject);
 			if (health > 1){
 				hp--;
 			} else {
