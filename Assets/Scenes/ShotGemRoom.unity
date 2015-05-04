@@ -1972,7 +1972,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 456942, guid: 24fb6bdfc9b91a24fb013b539d92a326, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 169350, guid: 24fb6bdfc9b91a24fb013b539d92a326, type: 2}
       propertyPath: m_Name
@@ -5654,8 +5654,8 @@ Transform:
   - {fileID: 1009160657}
   - {fileID: 351309070}
   - {fileID: 302896693}
-  - {fileID: 783093679}
   - {fileID: 48970315}
+  - {fileID: 783093679}
   m_Father: {fileID: 0}
   m_RootOrder: 16
 --- !u!1 &1122404177
@@ -9512,11 +9512,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 428458, guid: c93120436bad5904a80ba1405986c8d1, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 106238, guid: c93120436bad5904a80ba1405986c8d1, type: 2}
       propertyPath: m_Name
       value: testenemy 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437144, guid: c93120436bad5904a80ba1405986c8d1, type: 2}
+      propertyPath: waitUntilFire
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c93120436bad5904a80ba1405986c8d1, type: 2}
@@ -10720,7 +10724,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 431268, guid: 4a9e7d301f75cc24b8bb0761e8a8b29a, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11492076, guid: 4a9e7d301f75cc24b8bb0761e8a8b29a, type: 2}
       propertyPath: defaultIsRight
